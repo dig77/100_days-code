@@ -1,0 +1,48 @@
+.calendar-wrapper {
+    max-width: 50%;
+    font: 100% system-ui;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.first-day {
+    grid-column-start: 5;
+}
+
+.day-name {
+    background: #eee;
+    padding:1em;
+    font-weight: bold;
+
+}
+
+h1 {
+    text-align: center;
+}
+
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+li {
+    padding: 2px;
+}
+
+.calendar-actions {
+    margin-top: 2em;
+}
+
+.calendar li:not(.day-name) {
+    margin: 1em;
+}
+
+.is-done {
+    border: 3px solid red;
+    border-radius: 5px;
+}
