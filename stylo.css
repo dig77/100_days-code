@@ -1,6 +1,40 @@
-.calendar-wrapper {
-    max-width: 50%;
+body {
+    margin: 0;
+    padding: 0;
     font: 100% system-ui;
+}
+
+.is-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+        "side-left side-left side-left side-right";
+    height: 100vh;
+}
+
+.is-calendar-wrap {
+    grid-area: side-left;
+    background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.is-actions-wrap {
+    grid-area: side-right;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-wrapper {
+    width: 60%;
+    margin: 3em 10em;
+    background-color: #fff;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
 }
 
 .calendar {
@@ -14,13 +48,15 @@
 
 .day-name {
     background: #eee;
-    padding:1em;
+    padding: 1em;
     font-weight: bold;
 
 }
 
-h1 {
+h3 {
     text-align: center;
+    text-transform: uppercase;
+    color: #475a63;
 }
 
 ol {
@@ -35,7 +71,59 @@ li {
 }
 
 .calendar-actions {
+    display: flex;
+    flex-direction: column;
     margin-top: 2em;
+    align-items: center;
+    width: 77%;
+}
+
+.calendar-actions>* {
+    margin: 1em 0;
+}
+
+
+.calendar-actions input,
+.calendar-actions textarea {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #668295;
+    background-color: transparent;
+    background-clip: padding-box;
+    border: 1px solid #B7C4CD;
+    border-radius: 4px;
+    vertical-align: middle;
+    padding: 1em;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.5;
+    color: #FFFFFF;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: #f44336;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    min-width: 200px;
+    padding: 0.9em;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+button:hover {
+    background-color: #d32f2f;
+    transition: all .3s;
 }
 
 .calendar li:not(.day-name) {
@@ -50,9 +138,21 @@ li {
 }
 
 .is-done span {
-    background-color:red;
-    color:#fff;
+    background-color: #f44336;
+    color: #fff;
     font-weight: 500;
     border-radius: 100%;
     cursor: pointer;
+}
+
+#savedText {
+    font-weight: 600;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    padding: 1em 2em;
+    margin-top: 1.5em;
 }
