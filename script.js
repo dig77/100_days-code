@@ -1,19 +1,47 @@
-const calendarElements = Array.from(document.querySelectorAll('.calendar li'))
+const calendarElements = Array.from(document.querySelectorAll('.calendar li'));
+const isTarget = document.querySelectorAll('li');
+const input = document.querySelector('#day');
+const textInput = document.querySelector('#text');
+const isSavedText = document.querySelector('#savedText')
+const button = document.querySelector('#submitBt');
+const localStorageTransactions = JSON.parse(localStorage.getItem('my-data'));
+let transactions = localStorage.getItem('my-data') !== null ? localStorageTransactions : [];
 
-const input = document.querySelector('#day')
+const updateData = () => {
+    localStorage.setItem('my-data', JSON.stringify(transactions));
+}
 
-const button = document.querySelector('#submitBt')
+if (localStorageTransactions) {
+    isTarget.forEach(element => {
+        for (let j = 0; j < localStorageTransactions.length; j++) {
+            let savedCounter = localStorageTransactions[j].number;
+            if (element.innerText == savedCounter) {
+                console.log(element);
+                element.classList.add('is-done');
+                element.addEventListener('click', () => {
+                    const myText = localStorageTransactions[j].text;
+                    isSavedText.innerText = myText;
+                })
+            }
+        }
+    });
+}
 
-function checkNumber() {
-    const isNumber = input.value
-    for(let i = 0; i < calendarElements.length; i++) {
-        const isDay = calendarElements[i].innerHTML
-        if (isDay === isNumber) calendarElements[i].classList.add('is-done')
+function save() {
+    const isNumber = input.value;
+    for (let i = 0; i < calendarElements.length; i++) {
+        const isDay = calendarElements[i].innerText;
+        if (isDay === isNumber) {
+            calendarElements[i].classList.add('is-done');
+        }
     }
+    const myObj = {
+        number: input.value,
+        text: textInput.value
+    };
+    transactions.push(myObj);
+    updateData();
 }
 
 
-button.addEventListener('click', checkNumber)
-
-
-
+button.addEventListener('click', save);

@@ -42,7 +42,17 @@ li {
     margin: 1em;
 }
 
-.is-done {
-    border: 3px solid red;
-    border-radius: 5px;
+.calendar li span {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    line-height: 2.5;
+}
+
+.is-done span {
+    background-color:red;
+    color:#fff;
+    font-weight: 500;
+    border-radius: 100%;
+    cursor: pointer;
 }
