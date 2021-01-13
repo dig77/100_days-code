@@ -15,12 +15,12 @@ if (localStorageTransactions) {
     isTarget.forEach(element => {
         for (let j = 0; j < localStorageTransactions.length; j++) {
             let savedCounter = localStorageTransactions[j].number;
-            if (element.innerText == savedCounter) {
+            if (element.textContent == savedCounter) {
                 console.log(element);
                 element.classList.add('is-done');
                 element.addEventListener('click', () => {
                     const myText = localStorageTransactions[j].text;
-                    isSavedText.innerText = myText;
+                    isSavedText.textContent = myText;
                 })
             }
         }
@@ -30,7 +30,7 @@ if (localStorageTransactions) {
 function save() {
     const isNumber = input.value;
     for (let i = 0; i < calendarElements.length; i++) {
-        const isDay = calendarElements[i].innerText;
+        const isDay = calendarElements[i].textContent;
         if (isDay === isNumber) {
             calendarElements[i].classList.add('is-done');
         }
